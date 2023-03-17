@@ -5,7 +5,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-// Get the method request and the id if provided
+// Get the method request and the id if provided for all the tables
 
 $method = $_SERVER['REQUEST_METHOD'];
 $quoteId = ($_GET['id']);
