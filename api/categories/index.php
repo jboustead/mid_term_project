@@ -6,13 +6,13 @@ header('Content-Type: application/json');
 
 // Get the method request and the id if provided
 
+$method = $_SERVER['REQUEST_METHOD'];
+
 if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
     exit();
 }
-
-$method = $_SERVER['REQUEST_METHOD'];
 
 // Obtain the Database class and instantiate a new Database object
 
