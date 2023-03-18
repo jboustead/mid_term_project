@@ -8,7 +8,7 @@ function findAll($result) {
     if ($num > 0) {
         // Quotes array
         $author_arr = array();
-        $author_arr['data'] = array();
+        //$author_arr['data'] = array();
 
         // Loop through the quotes
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -20,7 +20,7 @@ function findAll($result) {
             );
 
             // Push to the 'data'
-            array_push($author_arr['data'], $author_item);
+            array_push($author_arr, $author_item);
         }
 
         // Turn to JSON output

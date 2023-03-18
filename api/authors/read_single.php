@@ -13,7 +13,7 @@ function findSingle($author) {
         // Create array
         $id_array = array (
             'id' => $author->id,
-            'name' => $author->author
+            'author' => $author->author
         );
 
         // Make JSON

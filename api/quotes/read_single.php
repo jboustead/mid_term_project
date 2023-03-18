@@ -7,7 +7,7 @@ function findSingle($quote) {
 
     if ($quote->id == null) {
         echo json_encode(
-            array('message' => 'Quote_id Not Found')
+            array('message' => 'No quotes Found')
         );
     } else {
         // Create array

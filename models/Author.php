@@ -31,7 +31,7 @@ class Author
     // Get Single Category
     public function read_single() {
         // Create query
-        $query = 'SELECT id, author FROM authors WHERE id = ?';
+        $query = 'SELECT id, author FROM '.$this->table.' WHERE id = ?';
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
@@ -47,6 +47,7 @@ class Author
         // Set properties
         $this->id = $row['id'];
         $this->author = $row['author'];
+        var_dump($this->author);
     }
 
     // Creat Post

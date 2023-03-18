@@ -13,7 +13,7 @@ function findSingle($category) {
         // Create array
         $id_array = array (
             'id' => $category->id,
-            'name' => $category->category
+            'category' => $category->category
         );
 
         // Make JSON
