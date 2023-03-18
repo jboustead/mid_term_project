@@ -15,9 +15,6 @@ function createEntry($db) {
     $quote->quote = $data->quote;
     $quote->author_id = $data->author_id;
     $quote->category_id = $data->category_id;
-    var_dump($quote->quote);
-    var_dump($quote->author_id);
-    var_dump($quote->category_id);
 
     // Add the quote to the database
 

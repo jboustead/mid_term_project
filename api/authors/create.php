@@ -17,17 +17,19 @@ function createEntry($db) {
 
     // Add the author to the database
 
-    //TODO go back and figure out why I'm not getting the author id in the message of Post created
-    if ($author->create()) {
+    if ($author->author != "") {
+        $author->create();
         echo json_encode(
             array(
-                'message' => 'Author Created',
                 'id' => $author->id,
                 'author' => $author->author)
         );
     } else {
         echo json_encode(
-            array('message' => 'Author Not Created')
+            array('message' => 'Missing Required Parameters\'s')
         );
     }
+
+
+
 }

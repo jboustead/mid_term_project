@@ -14,17 +14,18 @@ function createEntry($db) {
 
     $category->category = $data->category;
 
-    // Add the author to the database
+    // Add the category to the database
 
-    if ($category->create()) {
+    if ($category->author != "") {
+        $category->create();
         echo json_encode(
             array(
-                'message' => 'Category Created',
+                'id' => $category->id,
                 'category' => $category->category)
         );
     } else {
         echo json_encode(
-            array('message' => 'Category Not Created')
+            array('message' => 'Missing Required Parameters\'s')
         );
     }
 }

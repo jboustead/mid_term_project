@@ -8,7 +8,7 @@ function findAll($result) {
     if ($num > 0) {
         // Quotes array
         $category_arr = array();
-        $category_arr['data'] = array();
+        //$category_arr['data'] = array();
 
         // Loop through the quotes
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -20,7 +20,7 @@ function findAll($result) {
             );
 
             // Push to the 'data'
-            array_push($category_arr['data'], $category_item);
+            array_push($category_arr, $category_item);
         }
 
         // Turn to JSON output
