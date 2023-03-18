@@ -44,7 +44,7 @@ class Author
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (row) {
+        if (!$row) {
             // Set properties
             $this->id = $row['id'];
             $this->author = $row['author'];
