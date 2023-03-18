@@ -17,21 +17,15 @@ class Quote
         $this->conn = $db;
     }
 
-    // Get Author
+    // Get Quote
     public function read()
     {
         // Create query
-        $query = 'SELECT 
-	        authors.id,
-            authors.author, 
-            categories.category,
-	        quotes.quote
-        FROM '.
-	        $this->table.' 
-        JOIN
-            authors ON quotes.author_id = authors.id
-        JOIN
-            categories ON quotes.category_id = category_id';
+        $query = 'SELECT DISTINCT t1.id, t1.quote, ft1.author, ft2.category
+            FROM '. $this->table.' t1
+            JOIN authors ft1 ON t1.author_id = ft1.id
+            JOIN categories ft2 ON t1.category_id = ft2.id
+            ORDER BY t1.id ASC;';
 
         // Prepared statement
         $stmt = $this->conn->prepare($query);
@@ -115,13 +109,13 @@ class Quote
 	            ' .$this->table. ' q
                 JOIN authors a ON q.author_id = a.id
                 JOIN categories c ON q.category_id = c.id
-                WHERE c.id = ?';
+                WHERE q.id = ?';
 
         //Prepare statement
         $stmt = $this->conn->prepare($query);
 
         // Bind ID
-        $stmt->bindParam(1, $this->category_id);
+        $stmt->bindParam(1, $this->id);
 
         // Execute query
         $stmt->execute();

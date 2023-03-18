@@ -25,8 +25,8 @@ function findAll($quote) {
 
             $quote_item = array(
                 'id' => $id,
-                'author' => $author,
-                'category' => $category,
+                'author_id' => $author,
+                'category_id' => $category,
                 'quote' => $quote
             );
 

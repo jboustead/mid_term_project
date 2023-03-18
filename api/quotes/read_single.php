@@ -2,7 +2,7 @@
 
 function findSingle($quote) {
 
-    // Get single author
+    // Get single quote
     $quote->read_single();
 
     if ($quote->id == null) {

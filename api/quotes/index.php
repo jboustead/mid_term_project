@@ -5,18 +5,18 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
+if ($method === 'OPTIONS') {
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+    header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
+    exit();
+}
+
 // Get the method request and the id if provided for all the tables
 
 $method = $_SERVER['REQUEST_METHOD'];
 $quoteId = ($_GET['id']);
 $authorId = ($_GET['authorId']);
 $categoryId = ($_GET['categoryId']);
-
-if ($method === 'OPTIONS') {
-    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-    header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
-    exit();
-}
 
 // Obtain the Database class and instantiate a new Database object
 
