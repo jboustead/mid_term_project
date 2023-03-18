@@ -14,9 +14,15 @@ if ($method === 'OPTIONS') {
 // Get the method request and the id if provided for all the tables
 
 $method = $_SERVER['REQUEST_METHOD'];
-$quoteId = ($_GET['id']);
-$authorId = ($_GET['authorId']);
-$categoryId = ($_GET['categoryId']);
+if (isset($_GET['id'])) {
+    $quoteId = ($_GET['id']);
+}
+if (isset($_GET['authorId'])) {
+    $authorId = ($_GET['authorId']);
+}
+if (isset($_GET['categoryId'])) {
+    $categoryId = ($_GET['categoryId']);
+}
 
 // Obtain the Database class and instantiate a new Database object
 
