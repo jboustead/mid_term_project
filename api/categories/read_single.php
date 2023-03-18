@@ -5,7 +5,7 @@ function findSingle($category) {
     // Get single author
     $category->read_single();
 
-    if($category->id == null) {
+    if($category->category == null) {
         echo json_encode(
             array('message' => 'category_id Not Found')
         );

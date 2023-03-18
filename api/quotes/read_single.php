@@ -5,9 +5,9 @@ function findSingle($quote) {
     // Get single quote
     $quote->read_single();
 
-    if ($quote->id == null) {
+    if ($quote->quote == null) {
         echo json_encode(
-            array('message' => 'No quotes Found')
+            array('message' => 'No Quotes Found')
         );
     } else {
         // Create array
