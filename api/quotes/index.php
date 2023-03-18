@@ -15,6 +15,8 @@ if ($method === 'OPTIONS') {
 
 if (isset($_SERVER['REQUEST_METHOD'])) {
     $method = $_SERVER['REQUEST_METHOD'];
+} else {
+    $method = null;
 }
 
 if (isset($_GET['id'])) {
