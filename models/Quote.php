@@ -122,7 +122,7 @@ class Quote
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$row) {
+        if (isset($row['quote'])) {
             // Set properties
             $this->id = $row['id'];
             $this->quote = $row['quote'];
