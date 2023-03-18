@@ -122,11 +122,13 @@ class Quote
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Set properties
-        $this->id = $row['id'];
-        $this->quote = $row['quote'];
-        $this->author_id = $row['author'];
-        $this->category_id = $row['category'];
+        if ($row) {
+            // Set properties
+            $this->id = $row['id'];
+            $this->quote = $row['quote'];
+            $this->author_id = $row['author'];
+            $this->category_id = $row['category'];
+        }
     }
 
     // Creat Post
