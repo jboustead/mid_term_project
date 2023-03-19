@@ -18,13 +18,13 @@ function updatePost($db) {
     if($quote->update()) {
         echo json_encode(
             array('id' => $quote->id,
-                "quote" => $this->quote,
-                "author_id" => $this->authur_id,
-                "category_id" => $this->category_id)
+                "quote" => $quote->quote,
+                "author_id" => $quote->author_id,
+                "category_id" => $quote->category_id)
         );
     } else {
         echo json_encode(
-            array('message' => 'Author id: '.$quote->id.' has NOT been updated')
+            array('message' => 'Quote id: '.$quote->id.' has NOT been updated')
         );
     }
 }

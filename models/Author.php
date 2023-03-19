@@ -100,19 +100,17 @@ class Author
 
     public function update() {
         // Create query
-        $query = 'UPDATE authors SET author = \''.$this->author.'\' WHERE id ='.$this->id;
+        $query = 'UPDATE '.$this->table.' SET author = :category1 WHERE id = :id';
 
-        var_dump($query);
         // Prepare statement
         $stmt = $this->conn->prepare($query);
 
-//        var_dump($this->author);
-//        var_dump($this->id);
-//        // Bind data
-//        $stmt->bindParam(':id', $this->id);
-//        $stmt->bindParam(':value1', $this->author);
+        // Clean data
+        $this->author = htmlspecialchars(strip_tags($this->author));
 
-        var_dump($stmt);
+        // Bind data
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':category1', $this->author);
 
         // Execute query
         if($stmt->execute()) {

@@ -10,17 +10,17 @@ function updatePost($db) {
 
     // Set ID to UPDATE
     $author->id = $data->id;
-    $author->author = $data->author;
+    $author->category = $data->author;
 
-    // Update the post
+    // Delete the post
     if($author->update()) {
         echo json_encode(
             array('id' => $author->id,
-                'author' => $this->authur)
+                "category" => $author->category)
         );
     } else {
         echo json_encode(
-            array('message' => 'Author id: '.$author->id.', '.$author->author.' has NOT been updated')
+            array('message' => 'Author id: '.$category->id.', '.$category->category.' has NOT been updated')
         );
     }
 }
