@@ -11,13 +11,11 @@ function createEntry($db) {
     include_once '../../models/Author.php';
     $author = new Author($db);
 
-    // Assign json data to Author object
+    if (isset($data->author) && property_exists($data, 'author')) {
+        // Assign json data to Author object
+        $author->author = $data->author;
+        var_dump($author->author);
 
-    $author->author = $data->author;
-
-    // Add the author to the database
-
-    if ($author->author != "") {
         $author->create();
         echo json_encode(
             array(
@@ -29,7 +27,4 @@ function createEntry($db) {
             array('message' => 'Missing Required Parameters\'s')
         );
     }
-
-
-
 }
