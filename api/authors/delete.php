@@ -14,7 +14,7 @@ function deletePost($db) {
     // Delete the post
     if($author->delete()) {
         echo json_encode(
-            array('message' => 'Author id: '.$author->id.' has been deleted')
+            array('message' => $author->id)
         );
     } else {
         echo json_encode(

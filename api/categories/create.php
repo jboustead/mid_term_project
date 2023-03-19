@@ -16,7 +16,7 @@ function createEntry($db) {
 
     // Add the category to the database
 
-    if ($category->author != "") {
+    if ($category->category != "") {
         $category->create();
         echo json_encode(
             array(
