@@ -11,7 +11,7 @@ function createEntry($db) {
     include_once '../../models/Author.php';
     $author = new Author($db);
 
-    if (isset($data->author) && property_exists($data, 'author')) {
+    if (isset($data->author) && property_exists($data, 'author') && !empty($data->author)) {
         // Assign json data to Author object
         $author->author = $data->author;
         var_dump($author->author);
