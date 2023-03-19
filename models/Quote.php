@@ -206,4 +206,18 @@ class Quote
 
         return false;
     }
+
+    public function findID () {
+        $query = 'SELECT id FROM '.$this->table.' WHERE id = '.$this->id.' LIMIT 1';
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['id'];
+    }
 }

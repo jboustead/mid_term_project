@@ -10,7 +10,6 @@ function deletePost($db) {
     // Set ID to UPDATE
     $category->id = $data->id;
 
-    //TODO can't ever get the message of not deleted to return
     // Delete the post
     if($category->delete()) {
         echo json_encode(

@@ -10,7 +10,6 @@ function deletePost($db) {
     // Set ID to UPDATE
     $author->id = $data->id;
 
-    //TODO can't seem to get it to return false to this so the failed message never gets printed
     // Delete the post
     if($author->delete()) {
         echo json_encode(
