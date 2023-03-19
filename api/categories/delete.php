@@ -14,7 +14,7 @@ function deletePost($db) {
     // Delete the post
     if($category->delete()) {
         echo json_encode(
-            array('message' => 'Category id: '.$category->id.' deleted')
+            array('id' => $category->id)
         );
     } else {
         echo json_encode(
