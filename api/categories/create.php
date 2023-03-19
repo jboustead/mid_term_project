@@ -10,22 +10,19 @@ function createEntry($db) {
     include_once '../../models/Category.php';
     $category = new Category($db);
 
-    // Assign json data to Author object
+    if (isset($data->category) && property_exists($data, 'category') && !empty($data->category)) {
+        // Assign json data to category object
+        $category->category = $data->category;
 
-    $category->category = $data->category;
-
-    // Add the category to the database
-
-    if ($category->category != "") {
         $category->create();
         echo json_encode(
             array(
                 'id' => $category->id,
-                'category' => $category->category)
+                'author' => $category->category)
         );
     } else {
         echo json_encode(
-            array('message' => 'Missing Required Parameters\'s')
+            array('message' => 'Missing Required Parameters')
         );
     }
 }

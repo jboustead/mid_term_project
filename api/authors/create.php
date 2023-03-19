@@ -24,7 +24,7 @@ function createEntry($db) {
         );
     } else {
         echo json_encode(
-            array('message' => 'Missing Required Parameters\'s')
+            array('message' => 'Missing Required Parameters')
         );
     }
 }
