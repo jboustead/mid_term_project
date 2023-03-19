@@ -14,9 +14,14 @@ function createEntry($db) {
     if (isset($data->author) && property_exists($data, 'author') && !empty($data->author)) {
         // Assign json data to Author object
         $author->author = $data->author;
-        var_dump($author->author);
 
+        // Add the new author to the table
         $author->create();
+
+        // Search for the new id for the new author
+        $author->id = $author->findID();
+
+        // Create JSON response
         echo json_encode(
             array(
                 'id' => $author->id,

@@ -19,7 +19,13 @@ function updatePost($db) {
         $quote->author_id = $data->author_id;
         $quote->category_id = $data->category_id;
 
+        // Are there posts for each of the data elements
+        // If there is then update and return the updated post message
+        // if not then return what was element was missing
+
         // Update the post
+        $quote->update();
+
         echo json_encode(
             array('id' => $quote->id,
                 "quote" => $quote->quote,

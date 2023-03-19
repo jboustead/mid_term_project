@@ -14,7 +14,13 @@ function createEntry($db) {
         // Assign json data to category object
         $category->category = $data->category;
 
+        // Update the category
         $category->create();
+
+        // Search for the new id for the new author
+        $category->id = $category->findID();
+
+        // Create JSON response message
         echo json_encode(
             array(
                 'id' => $category->id,

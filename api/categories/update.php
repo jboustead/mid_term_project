@@ -16,6 +16,8 @@ function updatePost($db) {
         $category->category = $data->category;
 
         // Update the post
+        $category->update();
+
         echo json_encode(
             array('id' => $category->id,
                 "category" => $category->category)

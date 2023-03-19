@@ -17,6 +17,8 @@ function updatePost($db)
         $author->author = $data->author;
 
         // Update the post
+        $author->update();
+
         echo json_encode(
             array('id' => $author->id,
                 "author" => $author->author)
