@@ -16,7 +16,7 @@ function updatePost($db) {
     if($author->update()) {
         echo json_encode(
             array('id' => $author->id,
-                "category" => $author->category)
+                "author" => $author->category)
         );
     } else {
         echo json_encode(
