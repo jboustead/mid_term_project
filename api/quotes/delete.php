@@ -13,11 +13,11 @@ function deletePost($db) {
     // Delete the post
     if($quote->delete()) {
         echo json_encode(
-            array('message' => $quote->id)
+            array('message' => 'Quote id: '.$quote->id.' has been deleted')
         );
     } else {
         echo json_encode(
-            array('message' => 'No Quotes Found')
+            array('message' => 'Quote id: '.$quote->id.' has NOT been deleted')
         );
     }
 }
