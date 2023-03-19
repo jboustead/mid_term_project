@@ -17,7 +17,10 @@ function updatePost($db) {
     // Delete the post
     if($quote->update()) {
         echo json_encode(
-            array('message' => 'Author id: '.$quote->id.' has been updated')
+            array('id' => $quote->id,
+                "quote" => $this->quote,
+                "author_id" => $this->authur_id,
+                "category_id" => $this->category_id)
         );
     } else {
         echo json_encode(

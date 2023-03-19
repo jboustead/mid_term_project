@@ -15,7 +15,8 @@ function updatePost($db) {
     // Delete the post
     if($category->update()) {
         echo json_encode(
-            array('message' => 'Author id: '.$category->id.', '.$category->category.' has been updated')
+            array('id' => $category->id,
+            "category" => $category->category)
         );
     } else {
         echo json_encode(
