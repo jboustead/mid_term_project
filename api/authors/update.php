@@ -12,8 +12,7 @@ function updatePost($db) {
     $author->id = $data->id;
     $author->author = $data->author;
 
-    //TODO Can't get the not update message to work for this either
-    // Delete the post
+    // Update the post
     if($author->update()) {
         echo json_encode(
             array('id' => $author->id,
