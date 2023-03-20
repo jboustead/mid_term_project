@@ -24,7 +24,7 @@ function createEntry($db) {
         echo json_encode(
             array(
                 'id' => $category->id,
-                'author' => $category->category)
+                'category' => $category->category)
         );
     } else {
         echo json_encode(
