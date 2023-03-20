@@ -7,6 +7,10 @@ function deletePost($db) {
     // Get raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
+    // Generate potential messages
+    $noQuote = array('message'=>'No Quotes Found');
+    $missing = array('message'=>'Missing Required Parameters');
+
     if (isset($data->id) && property_exists($data, 'id') && !empty($data->id)) {
 
         // Set ID to UPDATE
@@ -21,13 +25,15 @@ function deletePost($db) {
                 array('id' => $quote->id)
             );
         } else {
-            echo json_encode(
-                array('message' => 'No Quotes Found')
-            );
+//            echo json_encode(
+//                array('message' => 'No Quotes Found')
+//            );
+            echo json_encode($noQuote);
         }
     } else {
-        echo json_encode(
-            array('message' => 'Missing Required Parameters')
-        );
+//        echo json_encode(
+//            array('message' => 'Missing Required Parameters')
+//        );
+        echo json_encode($missing);
     }
 }
