@@ -19,19 +19,32 @@ function updatePost($db) {
         $quote->author_id = $data->author_id;
         $quote->category_id = $data->category_id;
 
-        // Are there posts for each of the data elements
-        // If there is then update and return the updated post message
-        // if not then return what was element was missing
+        // So we have all 3 properties needed, need to check to make sure the author_id and category_id are value
+        $authorCheck = $quote->checkAuthor();
+        $categoryCheck = $quote->checkCategory();
 
-        // Update the post
-        $quote->update();
-
-        echo json_encode(
-            array('id' => $quote->id,
-                "quote" => $quote->quote,
-                "author_id" => $quote->author_id,
-                "category_id" => $quote->category_id)
-        );
+        if (!$authorCheck) {
+            echo json_encode(
+                array('message' => 'author_id Not Found')
+            );
+        } elseif (!$categoryCheck) {
+            echo json_encode(
+                array('message' => 'category_id Not Found')
+            );
+        } else {
+            // Update the Quote
+            if ($quote->update()) {
+                // Find the ID of the newly create quote
+                $quote->id = $quote->findQuoteID();
+                echo json_encode(
+                    array(
+                        'id' => $quote->id,
+                        'quote' => $quote->quote,
+                        'author_id' => $quote->author_id,
+                        'category_id' => $quote->category_id)
+                );
+            }
+        }
     } else {
         echo json_encode(
             array('message' => 'Missing Required Parameters')
