@@ -272,7 +272,7 @@ class Quote
     }
 
     public function checkQuote () {
-        $query = 'SELECT id FROM quotes WHERE id = '.$this->quote;
+        $query = 'SELECT id FROM quotes WHERE id = '.$this->id;
 
         // Prepare statement
         $stmt = $this->conn->prepare($query);
