@@ -5,6 +5,11 @@ function createEntry($db) {
 
     $data = json_decode(file_get_contents("php://input"));
 
+    // Return messages
+    $noAuthor = array(
+        'message' => 'author_id Not Found'
+    );
+
     // Instantiate author object
 
     include_once '../../models/Quote.php';
@@ -24,9 +29,10 @@ function createEntry($db) {
         $categoryCheck = $quote->checkCategory();
 
         if (!$authorCheck) {
-            echo json_encode(
-                array('message' => 'author_id Not Found')
-            );
+//            echo json_encode(
+//                array('message' => 'author_id Not Found')
+//            );
+            echo json_encode($noAuthor);
         } elseif (!$categoryCheck) {
             echo json_encode(
                 array('message' => 'category_id Not Found')
