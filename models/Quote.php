@@ -230,13 +230,8 @@ class Quote
         // Execute query
         $stmt->execute();
 
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($result['id'] > 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public function checkCategory () {
@@ -248,13 +243,7 @@ class Quote
         // Execute query
         $stmt->execute();
 
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($result['id'] > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function findQuoteID () {
