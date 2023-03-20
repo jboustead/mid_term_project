@@ -220,4 +220,54 @@ class Quote
 
         return $result['id'];
     }
+
+    public function checkAuthor () {
+        $query = 'SELECT id FROM authors WHERE id = '.$this->author_id;
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['id'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkCategory () {
+        $query = 'SELECT id FROM categories WHERE id = '.$this->category_id;
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['id'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function findQuoteID () {
+        $query = 'SELECT id FROM '.$this->table.' WHERE quote = \''.$this->quote.'\' LIMIT 1';
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['id'];
+    }
 }

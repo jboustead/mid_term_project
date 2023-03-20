@@ -19,13 +19,32 @@ function createEntry($db) {
         $quote->author_id = $data->author_id;
         $quote->category_id = $data->category_id;
 
-        echo json_encode(
-            array(
-                'id' => $quote->id,
-                'quote' => $quote->quote,
-                'author_id' => $quote->author_id,
-                'category_id' => $quote->category_id)
-        );
+        // So we have all 3 properties needed, need to check to make sure the author_id and category_id are value
+        $authorCheck = $quote->checkAuthor();
+        $categoryCheck = $quote->checkCategory();
+
+        if (!$authorCheck) {
+            echo json_encode(
+                array('message' => 'author_id Not Found')
+            );
+        } elseif (!$categoryCheck) {
+            echo json_encode(
+                array('message' => 'category_id Not Found')
+            );
+        } else {
+            // Create the Quote
+            if ($quote->create()) {
+                // Find the ID of the newly create quote
+                $quote->id = $quote->findQuoteID();
+                echo json_encode(
+                    array(
+                        'id' => $quote->id,
+                        'quote' => $quote->quote,
+                        'author_id' => $quote->author_id,
+                        'category_id' => $quote->category_id)
+                );
+            }
+        }
     } else {
         echo json_encode(
             array('message' => 'Missing Required Parameters')
