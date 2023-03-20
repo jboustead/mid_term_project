@@ -28,9 +28,11 @@ function createEntry($db) {
                 array('message' => 'author_id Not Found')
             );
         } elseif (!$categoryCheck) {
-            echo json_encode(
-                array('message' => 'category_id Not Found')
-            );
+            $message = ["message"=>'author_id Not Found'];
+            //echo json_encode(
+            //    array('message' => 'category_id Not Found')
+            //);
+            echo json_encode($message);
         } else {
             // Create the Quote
             if ($quote->create()) {
