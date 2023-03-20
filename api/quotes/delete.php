@@ -16,7 +16,7 @@ function deletePost($db) {
         // Set ID to UPDATE
         $quote->id = $data->id;
 
-        if ($quote->findID() != null) {
+        if ($quote->findID()) {
             // Delete the post
             $quote->delete();
 
