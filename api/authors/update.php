@@ -16,16 +16,24 @@ function updatePost($db)
         $author->id = $data->id;
         $author->author = $data->author;
 
-        // Update the post
-        $author->update();
+        $authorCheck = $author->checkID();
 
-        echo json_encode(
-            array('id' => $author->id,
-                "author" => $author->author)
-        );
-        } else {
+        if (!$authorCheck) {
             echo json_encode(
-                array('message' => 'Missing Required Parameters')
+                array('message' => 'author_id Not Found')
+            );
+        } else {
+            // Update the post
+            $author->update();
+
+            echo json_encode(
+                array('id' => $author->id,
+                    "author" => $author->author)
             );
         }
+    } else {
+        echo json_encode(
+            array('message' => 'Missing Required Parameters')
+        );
+    }
 }

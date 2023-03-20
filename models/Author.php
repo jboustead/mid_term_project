@@ -136,4 +136,22 @@ class Author
 
         return $result['id'];
     }
+
+    public function checkID () {
+        $query = 'SELECT id FROM authors WHERE id ='.$this->id;
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['id'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
