@@ -22,6 +22,7 @@ function updatePost($db) {
         // So we have all 3 properties needed, need to check to make sure the author_id and category_id are value
         $authorCheck = $quote->checkAuthor();
         $categoryCheck = $quote->checkCategory();
+        $quoteCheck = $quote->checkQuote();
 
         if (!$authorCheck) {
             echo json_encode(
@@ -31,7 +32,12 @@ function updatePost($db) {
             echo json_encode(
                 array('message' => 'category_id Not Found')
             );
-        } else {
+        } elseif (!$quoteCheck) {
+            echo json_encode(
+                array('message' => 'No Quotes Found')
+            );
+        }
+        else {
             // Update the Quote
             if ($quote->update()) {
                 // Find the ID of the newly create quote

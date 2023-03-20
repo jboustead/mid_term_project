@@ -270,4 +270,22 @@ class Quote
 
         return $result['id'];
     }
+
+    public function checkQuote () {
+        $query = 'SELECT id FROM quotes WHERE id = '.$this->quote;
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['id'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
